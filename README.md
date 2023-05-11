@@ -12,7 +12,39 @@ The cloud is perfect for hosting static websites that only include HTML, CSS, an
 
 Udagram is a simple cloud application developed alongside the Udacity Cloud Engineering Nanodegree. It allows users to register and log into a web client, post photos to the feed, and process photos using an image filtering microservice.
 
-## Project 3: TODO
+## Project 3: Refactor Monolith to Microservices and Deploy
+
+The project application, Udagram - an Image Filtering application, allows users to register and log into a web client, post photos to the feed, and process photos using an image filtering microservice. It has two components:
+- Frontend - Angular web application built with Ionic framework
+- Backend RESTful API - Node-Express application
+
+Note:
+
+#config
+kubectl apply -f aws-secret.yaml
+kubectl apply -f env-secret.yaml
+kubectl apply -f env-configmap.yaml
+
+#deployment
+kubectl apply -f reverseproxy-deployment.yaml
+kubectl apply -f backend-feed-deployment.yaml
+kubectl apply -f backend-user-deployment.yaml
+kubectl apply -f frontend-deployment.yaml
+
+#service
+kubectl apply -f reverseproxy-service.yaml
+kubectl apply -f backend-feed-service.yaml
+kubectl apply -f backend-user-service.yaml
+kubectl apply -f frontend-service.yaml
+
+#loadbalancer
+kubectl expose deployment frontend --type=LoadBalancer --name=publicfrontend
+kubectl expose deployment reverseproxy --type=LoadBalancer --name=publicreverseproxy
+
+#scalling
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+kubectl get deployment metrics-server -n kube-system
+kubectl autoscale deployment frontend --cpu-percent=70 --min=3 --max=5
 
 ## Project 4: TODO
 
