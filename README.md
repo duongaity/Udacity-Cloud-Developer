@@ -46,6 +46,11 @@ kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/late
 kubectl get deployment metrics-server -n kube-system
 kubectl autoscale deployment frontend --cpu-percent=70 --min=3 --max=5
 
+[default]
+aws_access_key_id=[INPUT_KEY]
+aws_secret_access_key=[INPUT_KEY]
+aws_session_token=[INPUT_KEY]
+
 ## Project 4: TODO
 
 ## Project 5: TODO
