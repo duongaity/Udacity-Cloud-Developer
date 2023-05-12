@@ -21,35 +21,47 @@ The project application, Udagram - an Image Filtering application, allows users 
 Note:
 
 #config
+```
 kubectl apply -f aws-secret.yaml
 kubectl apply -f env-secret.yaml
 kubectl apply -f env-configmap.yaml
+```
 
 #deployment
+```
 kubectl apply -f reverseproxy-deployment.yaml
 kubectl apply -f backend-feed-deployment.yaml
 kubectl apply -f backend-user-deployment.yaml
 kubectl apply -f frontend-deployment.yaml
+```
 
 #service
+```
 kubectl apply -f reverseproxy-service.yaml
 kubectl apply -f backend-feed-service.yaml
 kubectl apply -f backend-user-service.yaml
 kubectl apply -f frontend-service.yaml
+```
 
 #loadbalancer
+```
 kubectl expose deployment frontend --type=LoadBalancer --name=publicfrontend
 kubectl expose deployment reverseproxy --type=LoadBalancer --name=publicreverseproxy
+```
 
 #scalling
+```
 kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
 kubectl get deployment metrics-server -n kube-system
 kubectl autoscale deployment frontend --cpu-percent=70 --min=3 --max=5
+```
 
+```
 [default]
 aws_access_key_id=[INPUT_KEY]
 aws_secret_access_key=[INPUT_KEY]
 aws_session_token=[INPUT_KEY]
+```
 
 ## Project 4: TODO
 
