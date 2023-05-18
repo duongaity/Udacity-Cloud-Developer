@@ -75,4 +75,13 @@ In this project you will develop and deploy a simple "TODO" application using AW
 
 You might also store an id of a user who created a TODO item. Each TODO item can optionally have an attachment image. Each user only has access to TODO items that he/she has created.
 
-## Project 5: TODO
+## Project 5: Capstone
+
+In this project, I will develop and deploy a simple "TODO" application using AWS Lambda and Serverless framework.
+
+Functionality of the application:
+- The application will allow users to create/remove/update/read (CRUD) TODO items.
+- The application requires the user to login.
+- The application includes the backend and the frontend.
+- Each TODO item can optionally have an attachment image.
+- Each user only has access to TODO items that he/she has created.
